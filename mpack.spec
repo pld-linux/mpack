@@ -48,21 +48,3 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.unix.gz
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
-
-%changelog
-* Sun Sep 27 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [1.5-4]
-- added -q %setup parameter,
-- changed Buildroot to /tmp/%%{name}-%%{version}-root,
-- added using %%{name} and %%{version} in Source,
-- fiew simplification in %build, %istall and %files,
-- added full %attr description in %files.
-
-* Tue Apr 28 1998 Maciej Lesniewski <nimir@kis.p.lodz.pl>
-- Build for RH5
-
-* Sun Mar 22 1998 Maciej Lesniewski <nimir@kis.p.lodz.pl>
-- Build Root'ed
-- Moved to %{_bindir}
-- Added %attr in %install
-- Added %clean
