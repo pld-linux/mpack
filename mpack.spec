@@ -41,7 +41,7 @@ install unixunpk.man $RPM_BUILD_ROOT/usr/man/man1/munpack.1
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(644, root, root, 755)
+%defattr(644, root, root, 755)
 %doc README.unix
 %attr(755, root, root) /usr/bin/*
 %attr(644, root,  man) /usr/man/man1/*
