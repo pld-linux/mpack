@@ -1,0 +1,130 @@
+diff -urN mpack.orig/decode.c mpack/decode.c
+--- mpack.orig/decode.c	Thu Feb 16 22:39:44 1995
++++ mpack/decode.c	Sat Sep  7 11:47:08 2002
+@@ -466,6 +466,7 @@
+ 	while (*from && *from != '\"') {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+@@ -482,6 +483,7 @@
+ 	while (*from && !isspace(*from)) {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+@@ -571,6 +573,7 @@
+ 	while (*disposition && *disposition != '\"') {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+@@ -588,6 +591,7 @@
+ 	       *disposition != '(') {
+ 	    if (!--left) {
+ 		alloced += VALUEGROWSIZE;
++		left += VALUEGROWSIZE;
+ 		value = xrealloc(value, alloced);
+ 		to = value + alloced - left - 2;
+ 	    }
+diff -urN mpack.orig/unixos.c mpack/unixos.c
+--- mpack.orig/unixos.c	Sat Sep  7 11:43:48 2002
++++ mpack/unixos.c	Sat Sep  7 11:51:09 2002
+@@ -36,7 +36,9 @@
+ #define MAXHOSTNAMELEN 64
+ #endif
+ 
++#ifndef errno
+ extern int errno;
++#endif
+ extern char *malloc();
+ extern char *getenv();
+ 
+@@ -89,7 +91,7 @@
+ 	strcpy(buf, getenv("TMPDIR"));
+     }
+     else {
+-	strcpy(buf, "/tmp");
++ 	strcpy(buf, "/var/tmp");
+     }
+     strcat(buf, "/m-prts-");
+     p = getenv("USER");
+@@ -159,6 +161,11 @@
+ 
+     /* Get rid of leading ~ or ~/ */
+     while (*fname == '~' || *fname == '/') fname++;
++
++    /* Fix: the loop below handles internal "/../" but not
++     * leading "../" */
++    /* Get rid of leading "../" */
++    while (!strncmp(fname, "../", 3)) fname += 3;
+     
+     /* Clean out bad characters, create directories along path */
+     for (p=fname; *p; p++) {
+diff -urN mpack.orig/unixpk.c mpack/unixpk.c
+--- mpack.orig/unixpk.c	Thu Feb 16 22:39:50 1995
++++ mpack/unixpk.c	Sat Sep  7 11:47:08 2002
+@@ -33,7 +33,9 @@
+ 
+ extern char *getenv();
+ 
++#ifndef errno
+ extern int errno;
++#endif
+ extern int optind;
+ extern char *optarg;
+ 
+@@ -162,7 +164,7 @@
+ 	    strcpy(fnamebuf, getenv("TMPDIR"));
+ 	}
+ 	else {
+-	    strcpy(fnamebuf, "/tmp");
++	    strcpy(fnamebuf, "/var/tmp");
+ 	}
+ 	strcat(fnamebuf, "/mpackXXXXXX");
+ 	mktemp(fnamebuf);
+diff -urN mpack.orig/unixpk.man mpack/unixpk.man
+--- mpack.orig/unixpk.man	Sat Sep  7 11:43:48 2002
++++ mpack/unixpk.man	Sat Sep  7 11:49:57 2002
+@@ -136,7 +136,7 @@
+ .SH ENVIRONMENT
+ .TP
+ .B TMPDIR
+-Directory to store temporary files.  Default is /tmp.
++Directory to store temporary files.  Default is /var/tmp.
+ .TP
+ .B SPLITSIZE
+ Default value of the -m switch.
+diff -urN mpack.orig/unixunpk.man mpack/unixunpk.man
+--- mpack.orig/unixunpk.man	Sat Sep  7 11:43:48 2002
++++ mpack/unixunpk.man	Sat Sep  7 11:49:20 2002
+@@ -107,7 +107,7 @@
+ .SH ENVIRONMENT
+ .TP
+ .B TMPDIR
+-Directory to store temporary files.  Default is /tmp.
++Directory to store temporary files.  Default is /var/tmp.
+ .SH FILES
+ .TP
+ .B $TMPDIR/m-prts-$USER/
+diff -urN mpack.orig/uudecode.c mpack/uudecode.c
+--- mpack.orig/uudecode.c	Thu Feb 16 22:39:50 1995
++++ mpack/uudecode.c	Sat Sep  7 11:47:08 2002
+@@ -524,8 +524,9 @@
+      * representation syntax
+      */
+     do {
+-	while (*scan != '\n' && isprint(*scan)
+-	       && !isalnum(*scan) && *scan != '_') ++scan;
++        /* Patch: skip non-printable characters too.
++         * Sent upstream, no reply yet. */
++	while (*scan != '\n' && !isalnum(*scan) && *scan != '_') ++scan;
+ 	*fnamep = start = scan;
+ 	while (isalnum(*scan) || *scan == '-' || *scan == '+' || *scan == '&'
+ 	       || *scan == '_' || *scan == '.') {
