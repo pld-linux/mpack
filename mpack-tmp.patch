@@ -58,3 +58,14 @@ diff -rNu mpack/unixunpk.man mpack-redhat/unixunpk.man
  .SH FILES
  .TP
  .B $TMPDIR/m-prts-$USER/
+--- mpack/unixpk.c	2003-07-21 22:50:41.000000000 +0200
++++ mpack-redhat/unixpk.c	2004-10-16 14:12:20.000000000 +0200
+@@ -164,7 +164,7 @@
+ 	    strcpy(fnamebuf, getenv("TMPDIR"));
+ 	}
+ 	else {
+-	    strcpy(fnamebuf, "/usr/tmp");
++	    strcpy(fnamebuf, "/tmp");
+ 	}
+ 	strcat(fnamebuf, "/mpackXXXXXX");
+ 	mktemp(fnamebuf);
