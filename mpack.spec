@@ -5,23 +5,26 @@ Version:	1.5
 Release:	5
 Copyright:	Distributable
 Group:		Applications/Mail
+Group(pt):	Aplicações/Correio Eletrônico
 Group(pl):	Aplikacje/Poczta
-Source:		ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
-Patch:		mpack-tmp.patch
+Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
+Patch0:		mpack-tmp.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Mpack and munpack are utilities for encoding and decoding (respectively)
-binary files in MIME (Multipurpose Internet Mail Extensions) format mail
-messages. For compatibility with older forms of transferring binary files,
-the munpack program can also decode messages in split-uuencoded format.
-The Macintosh version can also decode messages in split-BinHex format.
+Mpack and munpack are utilities for encoding and decoding
+(respectively) binary files in MIME (Multipurpose Internet Mail
+Extensions) format mail messages. For compatibility with older forms
+of transferring binary files, the munpack program can also decode
+messages in split-uuencoded format. The Macintosh version can also
+decode messages in split-BinHex format.
 
 %description -l pl
-Programy mpack i munpack s³u¿± do kodowania i dekodowania (rekursywnie)
-plików binarnych w formacie MIME (Multipurpose Internet Mail Extensions)
-poczty elektronicznej. Dla zachowania kompatybilno¶ci program munpack tak¿e
-potrafi dekodowaæ listy w foemacie split-uuencoded.
+Programy mpack i munpack s³u¿± do kodowania i dekodowania
+(rekursywnie) plików binarnych w formacie MIME (Multipurpose Internet
+Mail Extensions) poczty elektronicznej. Dla zachowania kompatybilno¶ci
+program munpack tak¿e potrafi dekodowaæ listy w foemacie
+split-uuencoded.
 
 %prep
 %setup -q -n mpack
