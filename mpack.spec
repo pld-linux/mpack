@@ -3,7 +3,7 @@ Summary(pl):	mpack i munpack - narzêdzia MIME do poczty elektronicznej
 Name:		mpack
 Version:	1.5
 Release:	7
-License:	Distributable
+License:	distributable
 Group:		Applications/Mail
 Group(de):	Applikationen/Post
 Group(pl):	Aplikacje/Poczta
