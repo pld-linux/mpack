@@ -34,8 +34,8 @@ make CC="gcc" OPT="$RPM_OPT_FLAGS"
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/{bin,man/man1}
 install -s {mpack,munpack} $RPM_BUILD_ROOT/usr/bin
-install unixpk.man $RPM_BUILD_ROOT/usr/man/man1/mpack.1
-install unixunpk.man $RPM_BUILD_ROOT/usr/man/man1/munpack.1
+install unixpk.man $RPM_BUILD_ROOT%{_mandir}/man1/mpack.1
+install unixunpk.man $RPM_BUILD_ROOT%{_mandir}/man1/munpack.1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -44,7 +44,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 755)
 %doc README.unix
 %attr(755, root, root) /usr/bin/*
-%attr(644, root,  man) /usr/man/man1/*
+%attr(644, root,  man) %{_mandir}/man1/*
 
 %changelog
 * Sun Sep 27 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
