@@ -6,6 +6,7 @@ Release:	9
 License:	distributable
 Group:		Applications/Mail
 Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
+# Source0-md5:	f41f8aa2ae92d90e1ac03291973e65e4
 Patch0:		%{name}-tmp.patch
 Patch1:		%{name}-MIME_buffer_overflows.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
