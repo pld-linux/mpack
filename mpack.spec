@@ -1,14 +1,15 @@
 Summary:	mpack and munpack MIME e-mail utilities
 Summary(pl):	mpack i munpack - narzêdzia MIME do poczty elektronicznej
 Name:		mpack
-Version:	1.5
-Release:	9
+Version:	1.6
+Release:	1
 License:	distributable
 Group:		Applications/Mail
-Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
-# Source0-md5:	f41f8aa2ae92d90e1ac03291973e65e4
+Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}.tar.gz
+# Source0-md5:	a70fa5afa76539a9afb70b9d81568fe8
 Patch0:		%{name}-tmp.patch
-Patch1:		%{name}-MIME_buffer_overflows.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,20 +30,22 @@ split-uuencoded. Za pomoc± programu mpack mo¿na ³atwo (z linii
 poleceñ) wysy³aæ pliki poczt±.
 
 %prep
-%setup -q -n mpack
+%setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
-%{__make} CC="%{__cc}" OPT="%{rpmcflags}"
+%{__aclocal} -I cmulocal
+%{__autoconf}
+%{__automake}
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
 
-install mpack munpack $RPM_BUILD_ROOT%{_bindir}
-install unixpk.man $RPM_BUILD_ROOT%{_mandir}/man1/mpack.1
-install unixunpk.man $RPM_BUILD_ROOT%{_mandir}/man1/munpack.1
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
