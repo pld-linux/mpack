@@ -5,9 +5,6 @@ Version:	1.5
 Release:	7
 License:	distributable
 Group:		Applications/Mail
-Group(de):	Applikationen/Post
-Group(pl):	Aplikacje/Poczta
-Group(pt):	Aplicações/Correio Eletrônico
 Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
 Patch0:		%{name}-tmp.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
