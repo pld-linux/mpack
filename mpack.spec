@@ -8,7 +8,7 @@ Group:		Applications/Mail
 Group(pl):	Aplikacje/Poczta
 Source:		ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
 Patch:		mpack-tmp.patch
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Mpack and munpack are utilities for encoding and decoding (respectively)
