@@ -41,13 +41,11 @@ install mpack munpack $RPM_BUILD_ROOT%{_bindir}
 install unixpk.man $RPM_BUILD_ROOT%{_mandir}/man1/mpack.1
 install unixunpk.man $RPM_BUILD_ROOT%{_mandir}/man1/munpack.1
 
-gzip -9nf README.unix
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.unix.gz
+%doc README.unix
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
