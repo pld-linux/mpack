@@ -1,0 +1,60 @@
+diff -rNu mpack/README.unix mpack-redhat/README.unix
+--- mpack/README.unix	Thu Feb 16 15:39:41 1995
++++ mpack-redhat/README.unix	Sun Dec 22 20:27:08 1996
+@@ -203,7 +203,7 @@
+ 
+      TMPDIR
+           Root of directory to store partial messages awaiting 
+-          reassembly.  Default is "/usr/tmp".   Partial messages
++          reassembly.  Default is "/tmp".   Partial messages
+ 	  are stored in subdirectories of $TMPDIR/m-prts-$USER/
+ 
+ 
+diff -rNu mpack/mkreadme.pl mpack-redhat/mkreadme.pl
+--- mpack/mkreadme.pl	Thu Feb 16 15:39:47 1995
++++ mpack-redhat/mkreadme.pl	Sun Dec 22 20:27:35 1996
+@@ -428,7 +428,7 @@
+ =unix
+      TMPDIR
+           Root of directory to store partial messages awaiting 
+-          reassembly.  Default is "/usr/tmp".   Partial messages
++          reassembly.  Default is "/tmp".   Partial messages
+ 	  are stored in subdirectories of $TMPDIR/m-prts-$USER/
+ 
+ =pc os2
+diff -rNu mpack/unixos.c mpack-redhat/unixos.c
+--- mpack/unixos.c	Thu Feb 16 15:39:50 1995
++++ mpack-redhat/unixos.c	Sun Dec 22 20:25:27 1996
+@@ -89,7 +89,7 @@
+ 	strcpy(buf, getenv("TMPDIR"));
+     }
+     else {
+-	strcpy(buf, "/usr/tmp");
++	strcpy(buf, "/tmp");
+     }
+     strcat(buf, "/m-prts-");
+     p = getenv("USER");
+diff -rNu mpack/unixpk.man mpack-redhat/unixpk.man
+--- mpack/unixpk.man	Thu Feb 16 15:39:50 1995
++++ mpack-redhat/unixpk.man	Sun Dec 22 20:27:51 1996
+@@ -136,7 +136,7 @@
+ .SH ENVIRONMENT
+ .TP
+ .B TMPDIR
+-Directory to store temporary files.  Default is /usr/tmp.
++Directory to store temporary files.  Default is /tmp.
+ .TP
+ .B SPLITSIZE
+ Default value of the -m switch.
+diff -rNu mpack/unixunpk.man mpack-redhat/unixunpk.man
+--- mpack/unixunpk.man	Thu Feb 16 15:39:50 1995
++++ mpack-redhat/unixunpk.man	Sun Dec 22 20:28:09 1996
+@@ -107,7 +107,7 @@
+ .SH ENVIRONMENT
+ .TP
+ .B TMPDIR
+-Directory to store temporary files.  Default is /usr/tmp.
++Directory to store temporary files.  Default is /tmp.
+ .SH FILES
+ .TP
+ .B $TMPDIR/m-prts-$USER/
