@@ -28,7 +28,7 @@ potrafi dekodowaæ listy w foemacie split-uuencoded.
 
 %build
 rm -rf $RPM_BUILD_ROOT
-make CC=gcc OPT=$RPM_OPT_FLAGS
+make CC="gcc" OPT="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
