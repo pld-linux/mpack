@@ -44,7 +44,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644, root, root, 755)
 %doc README.unix
 %attr(755, root, root) /usr/bin/*
-%attr(644, root,  man) %{_mandir}/man1/*
+%{_mandir}/man1/*
 
 %changelog
 * Sun Sep 27 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
