@@ -15,17 +15,16 @@ Mpack and munpack are utilities for encoding and decoding
 Extensions) format mail messages. For compatibility with older forms
 of transferring binary files, the munpack program can also decode
 messages in split-uuencoded format. The Macintosh version can also
-decode messages in split-BinHex format.
-Using mpack you can easily send files via mail.
+decode messages in split-BinHex format. Using mpack you can easily
+send files via mail.
 
 %description -l pl
 Programy mpack i munpack s³u¿± do kodowania i dekodowania
 (rekursywnie) plików binarnych w formacie MIME (Multipurpose Internet
 Mail Extensions) poczty elektronicznej. Dla zachowania kompatybilno¶ci
 program munpack tak¿e potrafi dekodowaæ listy w formacie
-split-uuencoded.
-Za pomoc± programu mpack mo¿na ³atwo (z linii poleceñ) wysy³aæ pliki 
-poczt±.
+split-uuencoded. Za pomoc± programu mpack mo¿na ³atwo (z linii
+poleceñ) wysy³aæ pliki poczt±.
 
 %prep
 %setup -q -n mpack
