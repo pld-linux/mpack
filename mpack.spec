@@ -7,7 +7,7 @@ Copyright:   Distributable
 Group:       Utilities/Mail
 Source:      ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
 Patch:       mpack-tmp.patch
-Buildroot:   /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 Mpack and munpack are utilities for encoding and decoding (respectively)
