@@ -2,7 +2,7 @@ Summary:	mpack and munpack MIME e-mail utilities
 Summary(pl):	mpack i munpack - narzêdzia MIME do poczty elektronicznej
 Name:		mpack
 Version:	1.5
-Release:	6
+Release:	7
 License:	Distributable
 Group:		Applications/Mail
 Group(de):	Applikationen/Post
@@ -35,7 +35,7 @@ poczt±.
 %patch -p1
 
 %build
-%{__make} CC="gcc" OPT="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}"
+%{__make} CC="%{__cc}" OPT="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
