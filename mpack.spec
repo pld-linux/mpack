@@ -33,7 +33,7 @@ make CC="gcc" OPT="$RPM_OPT_FLAGS"
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/usr/{bin,man/man1}
-install -s {mpack,munpack} $RPM_BUILD_ROOT/usr/bin
+install -s {mpack,munpack} $RPM_BUILD_ROOT%{_bindir}
 install unixpk.man $RPM_BUILD_ROOT%{_mandir}/man1/mpack.1
 install unixunpk.man $RPM_BUILD_ROOT%{_mandir}/man1/munpack.1
 
@@ -43,7 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644, root, root, 755)
 %doc README.unix
-%attr(755, root, root) /usr/bin/*
+%attr(755, root, root) %{_bindir}/*
 %{_mandir}/man1/*
 
 %changelog
@@ -60,6 +60,6 @@ rm -rf $RPM_BUILD_ROOT
 
 * Sun Mar 22 1998 Maciej Lesniewski <nimir@kis.p.lodz.pl>
 - Build Root'ed
-- Moved to /usr/bin
+- Moved to %{_bindir}
 - Added %attr in %install
 - Added %clean
