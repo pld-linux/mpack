@@ -2,13 +2,14 @@ Summary:	mpack and munpack MIME e-mail utilities
 Summary(pl):	mpack i munpack - narzêdzia MIME do poczty elektronicznej
 Name:		mpack
 Version:	1.5
-Release:	5
-Copyright:	Distributable
+Release:	6
+License:	Distributable
 Group:		Applications/Mail
-Group(pt):	Aplicações/Correio Eletrônico
+Group(de):	Applikationen/Post
 Group(pl):	Aplikacje/Poczta
+Group(pt):	Aplicações/Correio Eletrônico
 Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}-src.tar.Z
-Patch0:		mpack-tmp.patch
+Patch0:		%{name}-tmp.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -31,17 +32,17 @@ split-uuencoded.
 %patch -p1
 
 %build
-%{__make} CC="gcc" OPT="$RPM_OPT_FLAGS"
+%{__make} CC="gcc" OPT="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
-install -s {mpack,munpack} $RPM_BUILD_ROOT%{_bindir}
+
+install mpack munpack $RPM_BUILD_ROOT%{_bindir}
 install unixpk.man $RPM_BUILD_ROOT%{_mandir}/man1/mpack.1
 install unixunpk.man $RPM_BUILD_ROOT%{_mandir}/man1/munpack.1
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man1/* \
-	README.unix
+gzip -9nf README.unix
 
 %clean
 rm -rf $RPM_BUILD_ROOT
