@@ -1,5 +1,5 @@
 Summary:	mpack and munpack MIME e-mail utilities
-Summary(pl):	mpack i munpack - narzêdzia MIME do poczty elektronicznej
+Summary(pl.UTF-8):   mpack i munpack - narzÄ™dzia MIME do poczty elektronicznej
 Name:		mpack
 Version:	1.6
 Release:	2
@@ -21,13 +21,13 @@ messages in split-uuencoded format. The Macintosh version can also
 decode messages in split-BinHex format. Using mpack you can easily
 send files via mail.
 
-%description -l pl
-Programy mpack i munpack s³u¿± do kodowania i dekodowania
-(rekursywnie) plików binarnych w formacie MIME (Multipurpose Internet
-Mail Extensions) poczty elektronicznej. Dla zachowania kompatybilno¶ci
-program munpack tak¿e potrafi dekodowaæ listy w formacie
-split-uuencoded. Za pomoc± programu mpack mo¿na ³atwo (z linii
-poleceñ) wysy³aæ pliki poczt±.
+%description -l pl.UTF-8
+Programy mpack i munpack sÅ‚uÅ¼Ä… do kodowania i dekodowania
+(rekursywnie) plikÃ³w binarnych w formacie MIME (Multipurpose Internet
+Mail Extensions) poczty elektronicznej. Dla zachowania kompatybilnoÅ›ci
+program munpack takÅ¼e potrafi dekodowaÄ‡ listy w formacie
+split-uuencoded. Za pomocÄ… programu mpack moÅ¼na Å‚atwo (z linii
+poleceÅ„) wysyÅ‚aÄ‡ pliki pocztÄ….
 
 %prep
 %setup -q
