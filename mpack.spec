@@ -2,12 +2,13 @@ Summary:	mpack and munpack MIME e-mail utilities
 Summary(pl.UTF-8):	mpack i munpack - narzędzia MIME do poczty elektronicznej
 Name:		mpack
 Version:	1.6
-Release:	2
+Release:	3
 License:	distributable
 Group:		Applications/Mail
 Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}.tar.gz
 # Source0-md5:	a70fa5afa76539a9afb70b9d81568fe8
 Patch0:		%{name}-tmp.patch
+Patch1:		%{name}-gentoo.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -32,6 +33,7 @@ poleceń) wysyłać pliki pocztą.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal} -I cmulocal
