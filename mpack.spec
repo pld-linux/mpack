@@ -2,7 +2,7 @@ Summary:	mpack and munpack MIME e-mail utilities
 Summary(pl.UTF-8):	mpack i munpack - narzędzia MIME do poczty elektronicznej
 Name:		mpack
 Version:	1.6
-Release:	3
+Release:	4
 License:	distributable
 Group:		Applications/Mail
 Source0:	ftp://ftp.andrew.cmu.edu/pub/mpack/%{name}-%{version}.tar.gz
